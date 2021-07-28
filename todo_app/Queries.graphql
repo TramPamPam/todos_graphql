@@ -1,0 +1,24 @@
+mutation AddNotCompleted($title: String!) {
+  createTodo(title: $title) {
+		... on Todo {
+			...ToDoDetail
+		}
+  }
+}
+
+mutation UpdateTitle($id: UUID!, $title: String!) {
+  updateTodo(id: $id, title: $title)
+}
+
+query allToDos {
+	todos {
+		... on Todo {
+			...ToDoDetail
+		}
+	}
+}
+
+fragment ToDoDetail on Todo {
+	id
+	title
+}
